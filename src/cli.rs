@@ -1,12 +1,12 @@
 #[derive(clap::Parser)]
-#[command(name = "xpost")]
-#[command(about = "Post to X from your terminal")]
+#[command(name = "post")]
+#[command(about = "Post to social media from your terminal")]
 #[command(version)]
 pub struct Cli {
     #[command(subcommand)]
     command: Option<Command>,
 
-    /// Text to post (shorthand for `xpost post "text"`)
+    /// Text to post (shorthand for `post tweet "text"`)
     #[arg(trailing_var_arg = true)]
     text: Vec<String>,
 }
@@ -82,7 +82,7 @@ async fn post_tweet(text: &str) -> eyre::Result<()> {
     let access_token = config
         .access_token
         .as_ref()
-        .ok_or_else(|| eyre::eyre!("not authenticated — run `xpost auth` first"))?
+        .ok_or_else(|| eyre::eyre!("not authenticated — run `post auth` first"))?
         .clone();
 
     let client = crate::twitter::Client::new(access_token);
@@ -128,7 +128,7 @@ fn status() -> eyre::Result<()> {
             println!("Refresh token: saved");
         }
     } else {
-        println!("Not authenticated — run `xpost auth` first");
+        println!("Not authenticated — run `post auth` first");
     }
 
     Ok(())

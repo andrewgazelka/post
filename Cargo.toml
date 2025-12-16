@@ -1,8 +1,8 @@
 [package]
-name = "xpost"
+name = "post"
 version = "0.1.0"
 edition = "2024"
-description = "Post to X from your terminal"
+description = "Post to social media from your terminal"
 license = "MIT"
 rust-version = "1.91.0"
 
