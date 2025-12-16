@@ -1,0 +1,22 @@
+[package]
+name = "post-x"
+description = "X (Twitter) posting support for post CLI"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+post-core.workspace = true
+eyre.workspace = true
+serde.workspace = true
+reqwest.workspace = true
+tracing.workspace = true
+base64.workspace = true
+sha2.workspace = true
+rand.workspace = true
+urlencoding.workspace = true
+open.workspace = true
+
+[lints]
+workspace = true

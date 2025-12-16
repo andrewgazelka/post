@@ -1,5 +1,5 @@
 {
-  description = "Post to X from your terminal";
+  description = "Post to social media from your terminal";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -33,10 +33,10 @@
 
       cargoArtifacts = craneLib.buildDepsOnly commonArgs;
 
-      xpost = craneLib.buildPackage (commonArgs // {inherit cargoArtifacts;});
+      post = craneLib.buildPackage (commonArgs // {inherit cargoArtifacts;});
     in {
-      inherit xpost;
-      default = xpost;
+      inherit post;
+      default = post;
     });
 
     checks = forAllSystems (system: let
@@ -57,14 +57,14 @@
 
       cargoArtifacts = craneLib.buildDepsOnly commonArgs;
     in {
-      xpost = self.packages.${system}.xpost;
+      post = self.packages.${system}.post;
 
-      xpost-clippy = craneLib.cargoClippy (commonArgs // {
+      post-clippy = craneLib.cargoClippy (commonArgs // {
         inherit cargoArtifacts;
         cargoClippyExtraArgs = "--all-targets -- --deny warnings";
       });
 
-      xpost-fmt = craneLib.cargoFmt {inherit src;};
+      post-fmt = craneLib.cargoFmt {inherit src;};
     });
 
     devShells = forAllSystems (system: let

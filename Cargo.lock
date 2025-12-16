@@ -1018,6 +1018,63 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7edddbd0b52d732b21ad9a5fab5c704c14cd949e5e9a1ec5929a24fded1b904c"
 
 [[package]]
+name = "post"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "color-eyre",
+ "eyre",
+ "post-core",
+ "post-reddit",
+ "post-x",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
+name = "post-core"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "directories",
+ "eyre",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
+name = "post-reddit"
+version = "0.1.0"
+dependencies = [
+ "base64",
+ "eyre",
+ "post-core",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tracing",
+]
+
+[[package]]
+name = "post-x"
+version = "0.1.0"
+dependencies = [
+ "base64",
+ "eyre",
+ "open",
+ "post-core",
+ "rand",
+ "reqwest",
+ "serde",
+ "sha2",
+ "tracing",
+ "urlencoding",
+]
+
+[[package]]
 name = "potential_utf"
 version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1865,29 +1922,6 @@ name = "writeable"
 version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9edde0db4769d2dc68579893f2306b26c6ecfbe0ef499b013d731b7b9247e0b9"
-
-[[package]]
-name = "xpost"
-version = "0.1.0"
-dependencies = [
- "axum",
- "base64",
- "clap",
- "color-eyre",
- "directories",
- "eyre",
- "open",
- "rand",
- "reqwest",
- "serde",
- "serde_json",
- "sha2",
- "tokio",
- "tracing",
- "tracing-subscriber",
- "url",
- "urlencoding",
-]
 
 [[package]]
 name = "yoke"

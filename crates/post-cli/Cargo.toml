@@ -1,0 +1,25 @@
+[package]
+name = "post"
+description = "Post to social media from your terminal"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "post"
+path = "src/main.rs"
+
+[dependencies]
+post-core.workspace = true
+post-x.workspace = true
+post-reddit.workspace = true
+eyre.workspace = true
+color-eyre.workspace = true
+tokio.workspace = true
+clap.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[lints]
+workspace = true

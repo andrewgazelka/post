@@ -1,12 +1,28 @@
 use eyre::WrapErr as _;
 
-const APP_NAME: &str = "xpost";
+const APP_NAME: &str = "post";
 
+/// Platform-agnostic configuration storage
 #[derive(serde::Serialize, serde::Deserialize, Default)]
 pub struct Config {
-    pub client_id: Option<String>,
-    pub client_secret: Option<String>,
-    pub access_token: Option<String>,
+    pub x: Option<XConfig>,
+    pub reddit: Option<RedditConfig>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize, Clone)]
+pub struct XConfig {
+    pub client_id: String,
+    pub client_secret: String,
+    pub access_token: String,
+    pub refresh_token: Option<String>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize, Clone)]
+pub struct RedditConfig {
+    pub client_id: String,
+    pub client_secret: String,
+    pub username: String,
+    pub access_token: String,
     pub refresh_token: Option<String>,
 }
 

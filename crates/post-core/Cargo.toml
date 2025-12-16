@@ -1,0 +1,19 @@
+[package]
+name = "post-core"
+description = "Shared types and utilities for post CLI"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+eyre.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+directories.workspace = true
+tokio.workspace = true
+axum.workspace = true
+tracing.workspace = true
+
+[lints]
+workspace = true
