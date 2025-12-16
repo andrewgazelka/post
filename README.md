@@ -1,27 +1,32 @@
 <p align="center">
-  <img src=".github/assets/header.svg" alt="xpost" width="100%"/>
+  <img src=".github/assets/header.svg" alt="post" width="100%"/>
 </p>
 
 <p align="center">
-  <code>nix run github:andrewgazelka/xpost</code>
+  <code>nix run github:andrewgazelka/post</code>
 </p>
 
-A minimal CLI for posting to X (Twitter) using OAuth 2.0 PKCE.
+A minimal CLI for posting to social media.
 
 ## Features
 
 - **OAuth 2.0 PKCE**: Secure authentication flow with automatic token refresh
-- **Simple**: Just `xpost "Hello world"` to post
+- **Simple**: Just `post "Hello world"` to post
 - **Fast**: Written in Rust, single binary
 
-## Setup
+## Supported Platforms
+
+- [x] X (Twitter)
+- [ ] Reddit ([#2](https://github.com/andrewgazelka/post/issues/2))
+
+## Setup (X/Twitter)
 
 1. Create an app at [developer.x.com](https://developer.x.com)
 2. Enable OAuth 2.0 with callback URL `http://localhost:8080/callback`
 3. Authenticate:
 
 ```bash
-xpost auth --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET
+post auth --client-id YOUR_CLIENT_ID --client-secret YOUR_CLIENT_SECRET
 ```
 
 Or set environment variables `CLIENT_ID` and `CLIENT_SECRET`.
@@ -30,31 +35,27 @@ Or set environment variables `CLIENT_ID` and `CLIENT_SECRET`.
 
 ```bash
 # Post a tweet
-xpost "Hello from xpost!"
+post "Hello from post!"
 
 # Or use the post subcommand
-xpost post "Hello from xpost!"
+post post "Hello from post!"
 
 # Check auth status
-xpost status
+post status
 
 # Logout
-xpost logout
+post logout
 ```
 
 ## Install
 
 ```bash
 # With Nix
-nix run github:andrewgazelka/xpost
+nix run github:andrewgazelka/post
 
 # Or install
-nix profile install github:andrewgazelka/xpost
+nix profile install github:andrewgazelka/post
 
 # With Cargo
-cargo install --git https://github.com/andrewgazelka/xpost
+cargo install --git https://github.com/andrewgazelka/post
 ```
-
----
-
-<sub>Not affiliated with X Corp. This is an unofficial tool.</sub>

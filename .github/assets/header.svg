@@ -31,8 +31,8 @@
   </g>
 
   <!-- Title -->
-  <text class="title" x="300" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700">xpost</text>
+  <text class="title" x="300" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700">post</text>
 
   <!-- Subtitle -->
-  <text class="subtitle" x="300" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="16">Post to X from your terminal</text>
+  <text class="subtitle" x="300" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="16">Post to social media from your terminal</text>
 </svg>
