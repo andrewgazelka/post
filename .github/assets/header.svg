@@ -2,43 +2,82 @@
   <style>
     .title { fill: #1f2328; }
     .subtitle { fill: #656d76; }
-    .x-logo { fill: #000000; }
-    .reddit-logo { fill: #FF4500; }
+    .terminal { fill: #3b82f6; }
+    .cursor { fill: #3b82f6; }
 
     @media (prefers-color-scheme: dark) {
       .title { fill: #ffffff; }
       .subtitle { fill: #8b949e; }
-      .x-logo { fill: #ffffff; }
     }
 
-    @keyframes send-pulse {
-      0%, 100% { opacity: 0.7; transform: translateX(0); }
-      50% { opacity: 1; transform: translateX(3px); }
+    /* Broadcast pulse from center outward */
+    @keyframes broadcast {
+      0%, 100% { opacity: 0.4; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.05); }
     }
 
-    .icon-group {
-      animation: send-pulse 2.5s ease-in-out infinite;
+    /* Staggered platform pulses */
+    .platform-1 { animation: broadcast 2.5s ease-in-out infinite; animation-delay: 0s; }
+    .platform-2 { animation: broadcast 2.5s ease-in-out infinite; animation-delay: 0.3s; }
+    .platform-3 { animation: broadcast 2.5s ease-in-out infinite; animation-delay: 0.6s; }
+    .platform-4 { animation: broadcast 2.5s ease-in-out infinite; animation-delay: 0.9s; }
+    .platform-5 { animation: broadcast 2.5s ease-in-out infinite; animation-delay: 1.2s; }
+
+    .platform-circle {
       transform-origin: center;
       transform-box: fill-box;
     }
 
-    .icon-x { animation-delay: 0s; }
-    .icon-reddit { animation-delay: 0.4s; }
+    /* Connection line pulse */
+    @keyframes line-pulse {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.5; }
+    }
+    .connection { animation: line-pulse 2.5s ease-in-out infinite; }
+
+    /* Cursor blink */
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .cursor { animation: blink 1s step-end infinite; }
   </style>
 
-  <!-- X Logo -->
-  <g class="icon-group icon-x" transform="translate(60, 40)">
-    <path class="x-logo" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" transform="scale(3.3)"/>
+  <!-- Central terminal prompt -->
+  <g transform="translate(80, 50)">
+    <!-- Terminal window -->
+    <rect x="0" y="0" width="120" height="70" rx="8" fill="#1e293b" opacity="0.9"/>
+    <!-- Terminal header bar -->
+    <rect x="0" y="0" width="120" height="16" rx="8" fill="#334155"/>
+    <rect x="0" y="8" width="120" height="8" fill="#334155"/>
+    <!-- Window buttons -->
+    <circle cx="12" cy="8" r="4" fill="#ef4444" opacity="0.8"/>
+    <circle cx="26" cy="8" r="4" fill="#eab308" opacity="0.8"/>
+    <circle cx="40" cy="8" r="4" fill="#22c55e" opacity="0.8"/>
+    <!-- Command text -->
+    <text x="10" y="40" font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8">$ post</text>
+    <rect class="cursor" x="52" y="30" width="7" height="12" rx="1"/>
   </g>
 
-  <!-- Reddit Logo (Snoo) -->
-  <g class="icon-group icon-reddit" transform="translate(165, 40)">
-    <path class="reddit-logo" d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" transform="scale(3.3)"/>
+  <!-- Connection lines (subtle) -->
+  <g class="connection">
+    <line x1="200" y1="60" x2="240" y2="35" stroke="#3b82f6" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="200" y1="75" x2="245" y2="75" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="200" y1="90" x2="240" y2="115" stroke="#ec4899" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="200" y1="100" x2="235" y2="140" stroke="#f97316" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="200" y1="55" x2="230" y2="10" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round"/>
   </g>
+
+  <!-- Platform circles (abstract, colored) -->
+  <circle class="platform-circle platform-1" cx="255" cy="30" r="14" fill="#3b82f6"/>
+  <circle class="platform-circle platform-2" cx="265" cy="75" r="14" fill="#8b5cf6"/>
+  <circle class="platform-circle platform-3" cx="255" cy="120" r="14" fill="#ec4899"/>
+  <circle class="platform-circle platform-4" cx="240" cy="145" r="10" fill="#f97316" opacity="0.8"/>
+  <circle class="platform-circle platform-5" cx="235" cy="5" r="10" fill="#06b6d4" opacity="0.8"/>
 
   <!-- Title -->
-  <text class="title" x="280" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700">post</text>
+  <text class="title" x="320" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700">post</text>
 
   <!-- Subtitle -->
-  <text class="subtitle" x="280" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="16">Post to social media from your terminal</text>
+  <text class="subtitle" x="320" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="16">Post to social media from your terminal</text>
 </svg>
