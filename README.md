@@ -6,6 +6,9 @@
   <code>nix run github:andrewgazelka/post</code>
 </p>
 
+> [!WARNING]
+> With the [Claude extension for Chrome](https://chrome.google.com/webstore/detail/claude/), Claude Code can now control your browser directly, which may make this tool less necessary for X/Twitter. However, Reddit is explicitly banned by the Chrome extension (likely for legal reasons), so this tool remains useful for Reddit posting.
+
 A minimal CLI for posting to social media.
 
 ## Features
