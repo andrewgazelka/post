@@ -94,3 +94,15 @@ nix profile install github:andrewgazelka/post
 # With Cargo
 cargo install --git https://github.com/andrewgazelka/post
 ```
+
+
+## Python (browser control, no API keys)
+
+Prefer driving a browser you are already signed into instead of an OAuth app? See
+[`python/`](python/): a small `xpost` module that posts via the real X composer over
+the Chrome DevTools Protocol.
+
+```python
+import asyncio, xpost
+asyncio.run(xpost.post("hello world"))
+```
